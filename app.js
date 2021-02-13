@@ -47,14 +47,14 @@ const selectItem = (event, img) => {
   if (item === -1) {
     sliders.push(img);
   }
-  else{
-    element.style.border="none";
-    sliders.pop(img);
-    return item;
+//   else{
+//     // element.style.border="none";
+//     // sliders.pop(img);
+//     // return item;
+//   }
+  else {
+    alert('Hey, Already added !')
   }
-  // else {
-  //   alert('Hey, Already added !')
-  // }
 }
 var timer
 const createSlider = () => {
