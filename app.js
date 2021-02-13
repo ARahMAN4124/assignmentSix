@@ -47,9 +47,10 @@ const selectItem = (event, img) => {
   if (item === -1) {
     sliders.push(img);
   }
-  else if(item === 1) {
+  else{
+    element.style.border="none";
     sliders.pop(img);
-    console.log("hey it's double");
+    return item;
   }
   // else {
   //   alert('Hey, Already added !')
