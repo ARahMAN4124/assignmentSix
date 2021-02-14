@@ -2,11 +2,10 @@ const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
-
 const searchInput =document.getElementById('search');
-
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+const spinner=document.getElementById("spinner")
 // selected image 
 let sliders = [];
 
@@ -28,10 +27,12 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
   })
+  toggleSpinner(false)
 
 }
 
 const getImages = (query) => {
+  toggleSpinner(true)
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
@@ -136,6 +137,14 @@ searchBtn.addEventListener('click', function () {
   sliders.length = 0;
 })
 
+const toggleSpinner=(show)=>{
+  if(show){
+    spinner.classList.remove("invisible")
+  }else{
+    spinner.classList.add("invisible")
+  }
+  console.log(spinner.classList);
+}
 sliderBtn.addEventListener('click', function () {
   createSlider()
 })
